@@ -11,7 +11,7 @@ import { DynamicForm } from '../../../models/dynamic-form';
   providers: [CompletedFormService],
 })
 export class CompletedFormComponent implements OnInit {
-  completedForm: {completedForm: Form, dynamicForm: DynamicForm};
+  completedForm!: { completedForm: Form; dynamicForm: DynamicForm; };
   fields: any[]=[];
 
   constructor(

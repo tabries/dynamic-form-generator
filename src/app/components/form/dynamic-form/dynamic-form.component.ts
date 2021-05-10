@@ -17,14 +17,14 @@ import { FormService } from '../../../services/form.service';
   providers: [FieldControlService, DynamicFormService, FormService],
 })
 export class DynamicFormComponent implements OnInit {
-  dynamicForm: DynamicForm;
+  dynamicForm!: DynamicForm;
   dynamicFormSections: Array<{
     section: { id: string; type: string; title: string };
     fields: FieldBase<any>[];
   }> = [];
   dynamicFormFormGroups: Array<FormGroup> = [];
   payLoad = '';
-  form: Form;
+  form!: Form;
   formSectionPayload: any[] = [];
   isLinear = true;
 
