@@ -1,0 +1,84 @@
+<div class="templateInfo">
+  <div>
+    <span>Applicant Name: {{ firstName }} {{ lastName }}</span>
+  </div>
+  <div>
+    <span>Application Type: {{ dynamicForm?.data.applicationType }}</span>
+  </div>
+  <div>
+    <span>Form ID: {{ dynamicForm?.data.formId }}</span>
+  </div>
+  <div>
+    <span>Application Creation Date: {{ dynamicForm?.data.creationDate }}</span>
+  </div>
+</div>
+<div class="formContainer">
+  <div class="formTreeView">
+    <nav class="form-structure">
+      <ul>
+        <li *ngFor="let tree of dynamicForm?.data.children; let i = index">
+          <a class="badge" style="pointer-events: none">{{ tree.title }}</a>
+          <ul>
+            <li *ngFor="let subform of tree.children; let i = index">
+              <a class="badge" style="pointer-events: none">{{
+                subform.title
+              }}</a>
+              <ul>
+                <li *ngFor="let section of subform.children; let i = index">
+                  <a class="badge" style="pointer-events: none">{{
+                    section.title
+                  }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="dynamicForm">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <div
+        *ngFor="let section of dynamicFormSections; let i = index"
+        class="form-row"
+      >
+        <mat-step [stepControl]="dynamicFormFormGroups[i]">
+          <form (ngSubmit)="onSubmit(i)" [formGroup]="dynamicFormFormGroups[i]">
+            <ng-template matStepLabel>{{
+              dynamicFormSections[i].section.title
+            }}</ng-template>
+
+            <div *ngFor="let field of section.fields" class="form-row">
+              <app-field
+                [field]="field"
+                [form]="dynamicFormFormGroups[i]"
+              ></app-field>
+            </div>
+
+            <div class="stepButtons">
+              <button mat-button matStepperPrevious>Back</button>
+              <button
+                mat-button
+                matStepperNext
+                [disabled]="!dynamicFormFormGroups[i].valid"
+                *ngIf="dynamicFormSections.length !== i + 1; else saveButton"
+              >
+                Next
+              </button>
+              <ng-template #saveButton>
+                <button
+                  mat-button
+                  matStepperNext
+                  [disabled]="!dynamicFormFormGroups[i].valid"
+                  class="save"
+                >
+                  Save
+                </button>
+              </ng-template>
+            </div>
+          </form>
+        </mat-step>
+      </div>
+    </mat-horizontal-stepper>
+  </div>
+</div>

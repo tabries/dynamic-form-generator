@@ -1,0 +1,32 @@
+<div>
+  <table
+    *ngIf="completedFormService?.completedForms?.length > 0; else completeForms"
+    id="completed-form-list"
+    class="table-bordered"
+  >
+    <thead>
+      <th>Form ID</th>
+      <th>Template ID</th>
+      <th>Date</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let completedForm of completedFormService.completedForms">
+        <td>
+          <a [routerLink]="['/completedform', completedForm._id]">
+            {{ completedForm._id }}
+          </a>
+        </td>
+        <td>{{ completedForm.template_id }}</td>
+        <td>{{ completedForm.created_at | date: "yyyy-MM-dd HH:mm:ss" }}</td>
+        <td>
+          <a (click)="deleteCompletedForm(completedForm._id)">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #completeForms> There's no completed forms yet. </ng-template>
+</div>

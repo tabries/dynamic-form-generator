@@ -1,0 +1,32 @@
+.new-application {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#dynamic-form-list {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+#dynamic-form-list td, #dynamic-form-list th {
+  border: 1px solid rgb(156, 156, 156);
+  padding: 8px;
+}
+
+#dynamic-form-list tr:nth-child(even){background-color: #f2f2f2;}
+
+#dynamic-form-list tr:hover {background-color: #ddd;}
+
+#dynamic-form-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #026ba8;
+  color: white;
+  font-weight: normal;
+}
+
+a {
+  cursor: pointer;
+}

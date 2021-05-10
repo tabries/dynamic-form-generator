@@ -1,0 +1,35 @@
+<div [formGroup]="form">
+  <label [attr.for]="field.id"
+    >{{ field.title
+    }}<span class="required" *ngIf="field.required">*</span></label
+  >
+
+  <div [ngSwitch]="field.controlType">
+    <input
+      *ngSwitchCase="'textbox'"
+      [formControlName]="field.id"
+      [id]="field.id"
+      [type]="field.type"
+      [mask]='mask'
+      [prefix]='prefix'
+    />
+
+    <select
+      [id]="field.id"
+      *ngSwitchCase="'dropdown'"
+      [formControlName]="field.id"
+    >
+      <option *ngFor="let opt of field.options" [value]="opt.id">
+        {{ opt.value }}
+      </option>
+    </select>
+  </div>
+
+  <div class="errorMessage" *ngIf="isInvalid">{{ field.title }} is required</div>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

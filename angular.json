@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fs-code-challenge": {
+    "temp-project": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         },
         "@schematics/angular:application": {
           "strict": true
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/fs-code-challenge",
+            "outputPath": "dist/temp-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,7 +31,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -68,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fs-code-challenge:build"
+            "browserTarget": "temp-project:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fs-code-challenge:build:production"
+              "browserTarget": "temp-project:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fs-code-challenge:build"
+            "browserTarget": "temp-project:build"
           }
         },
         "test": {
@@ -94,7 +95,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -116,16 +118,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fs-code-challenge:serve"
+            "devServerTarget": "temp-project:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "fs-code-challenge:serve:production"
+              "devServerTarget": "temp-project:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "fs-code-challenge"
+  "defaultProject": "temp-project"
 }

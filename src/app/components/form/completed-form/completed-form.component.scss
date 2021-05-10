@@ -1,0 +1,26 @@
+#completed-form {
+  border-collapse: collapse;
+  width: 40%;
+}
+
+#completed-form td,
+#completed-form th {
+  border: 1px solid rgb(156, 156, 156);
+  padding: 8px;
+}
+
+#completed-form tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#completed-form tr:hover {
+  background-color: #ddd;
+}
+
+#completed-form th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3c5369;
+  color: rgb(255, 255, 255);
+}

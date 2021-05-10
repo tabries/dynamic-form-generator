@@ -1,0 +1,32 @@
+
+#completed-form-list {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+#completed-form-list td,
+#completed-form-list th {
+  border: 1px solid rgb(156, 156, 156);
+  padding: 8px;
+}
+
+#completed-form-list tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#completed-form-list tr:hover {
+  background-color: #ddd;
+}
+
+#completed-form-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #3c5369;
+  color: rgb(255, 255, 255);
+  font-weight: Bold;
+}
+
+a {
+  cursor: pointer;
+}

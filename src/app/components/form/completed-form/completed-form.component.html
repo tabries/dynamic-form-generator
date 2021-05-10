@@ -1,0 +1,29 @@
+<div>
+  <div style="margin-bottom: 5px;">
+    <div>
+      <b>Application Type: </b
+      >{{ completedForm?.dynamicForm?.data?.applicationType }}
+    </div>
+    <div><b>JSON Template: </b>{{ completedForm?.dynamicForm?.title }}</div>
+    <div>
+      <b>Form completion date: </b
+      >{{
+        completedForm?.completedForm?.created_at | date: "yyyy-MM-dd HH:mm:ss"
+      }}
+    </div>
+  </div>
+  <table id="completed-form" class="table-bordered">
+    <thead>
+      <th>Field</th>
+      <th>Control Type</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let field of fields">
+        <td>{{ field.title }}</td>
+        <td>{{ field.controlType }}</td>
+        <td>{{ field.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

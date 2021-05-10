@@ -1,0 +1,37 @@
+<div>
+  <table
+    *ngIf="dynamicFormService?.dynamicForms?.length > 0; else uploadTemplates"
+    id="dynamic-form-list"
+    class="table-bordered"
+  >
+    <thead>
+      <th>Template Name</th>
+      <th>Uploaded</th>
+      <th>Dynamic Form ID</th>
+      <th>Application Instance Id</th>
+      <th>New application</th>
+      <th>Delete</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dynamicForm of dynamicFormService.dynamicForms">
+        <td>{{ dynamicForm.title }}</td>
+        <td>{{ dynamicForm.created_at | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ dynamicForm._id }}</td>
+        <td>{{ dynamicForm.application_instance_id }}</td>
+        <td>
+          <a [routerLink]="['/dynamicform', dynamicForm._id]">
+            <i class="material-icons">note_add</i>
+          </a>
+        </td>
+        <td>
+          <a (click)="deleteDynamicForm(dynamicForm._id)">
+            <i class="material-icons">delete</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #uploadTemplates>
+    To generate forms, you need to <a routerLink="/template">upload JSON templates</a> first.
+  </ng-template>
+</div>
